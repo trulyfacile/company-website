@@ -1,0 +1,733 @@
+/* 
+===========================================
+    TRULY FACILE LTD - CORPORATE STYLES
+===========================================
+*/
+
+/* --- CSS Variables & Branding --- */
+:root {
+    /* Extracted Logo Colors */
+    --clr-green: #35a34e;
+    --clr-yellow: #f2b919;
+    --clr-red: #ea4a3f;
+
+    /* Grayscale & Backgrounds */
+    --clr-white: #ffffff;
+    --clr-light: #f9fafb;
+    --clr-gray: #4b5563;
+    --clr-dark: #111827;
+    --clr-darker: #030712;
+
+    /* Typography */
+    --font-main: 'Inter', sans-serif;
+
+    /* Structural */
+    --radius: 8px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--clr-gray);
+    background-color: var(--clr-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--clr-dark);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Typography Utilities --- */
+.text-green {
+    color: var(--clr-green);
+}
+
+.text-yellow {
+    color: var(--clr-yellow);
+}
+
+.text-red {
+    color: var(--clr-red);
+}
+
+.text-white {
+    color: var(--clr-white);
+}
+
+.text-white-subtle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-green {
+    background-color: var(--clr-green);
+}
+
+.bg-yellow {
+    background-color: var(--clr-yellow);
+}
+
+.bg-red {
+    background-color: var(--clr-red);
+}
+
+.bg-light {
+    background-color: var(--clr-light);
+}
+
+.bg-white {
+    background-color: var(--clr-white);
+}
+
+/* --- Layout Utilities --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.container-narrow {
+    max-width: 1000px;
+}
+
+.section {
+    padding: 5rem 0;
+    scroll-margin-top: 80px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.center-margin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--clr-green);
+    color: var(--clr-white);
+}
+
+.btn-primary:hover {
+    background-color: #2b8b3f;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--clr-dark);
+    border-color: var(--clr-dark);
+}
+
+.btn-secondary:hover {
+    background-color: var(--clr-dark);
+    color: var(--clr-white);
+    transform: translateY(-2px);
+}
+
+/* --- Section Headers --- */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.title-underline {
+    height: 4px;
+    width: 60px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+}
+
+/* --- Navbar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-sm);
+    padding: 0.5rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+}
+
+.logo {
+    height: 50px;
+    display: block;
+    transition: var(--transition);
+}
+
+.navbar.scrolled .logo {
+    height: 40px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-item {
+    font-weight: 600;
+    color: var(--clr-dark);
+    position: relative;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--clr-green);
+    transition: var(--transition);
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.nav-item:hover {
+    color: var(--clr-green);
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--clr-dark);
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 80px;
+    /* Offset for navbar */
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: #000000;
+}
+
+.text-highlight {
+    background: linear-gradient(135deg, var(--clr-green), var(--clr-yellow), var(--clr-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.hero-pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--clr-light) 20%, transparent 20%),
+        radial-gradient(var(--clr-light) 20%, transparent 20%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* --- About Section --- */
+.auto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.feature-list {
+    margin-top: 1.5rem;
+}
+
+.feature-list li {
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: var(--clr-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.about-image-placeholder {
+    position: relative;
+    height: 400px;
+    background-color: transparent;
+    border-radius: var(--radius);
+    background-image: url('img/logo.svg');
+    background-size: 80%;
+    /* Slightly smaller than 100% for better airiness */
+    background-repeat: no-repeat;
+    background-position: center top;
+    /* Move logo up a bit to make room for bottom card */
+    box-shadow: none;
+    /* Removed shadow from placeholder as it's transparent now */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Bottom align the card */
+    padding-bottom: 2rem;
+    /* Add some space from the bottom border if needed, or set it exactly bottom */
+}
+
+.about-image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid var(--clr-yellow);
+    border-radius: var(--radius);
+    opacity: 0.3;
+    /* Suburban, elegant look */
+    z-index: -1;
+}
+
+.floating-card {
+    width: 80%;
+    /* Responsive width */
+    max-width: 320px;
+    background: rgba(255, 255, 255, 0.9);
+    /* 30% transparent */
+    backdrop-filter: blur(8px);
+    /* Subtle blur for better text readablility */
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Subtle glass border */
+    border-top: 4px solid var(--clr-red);
+    z-index: 2;
+    margin-bottom: -1rem;
+    /* Overlap slightly for depth */
+}
+
+.floating-card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Services Section --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--clr-white);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border-top: 4px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-card.border-green:hover {
+    border-color: var(--clr-green);
+}
+
+.service-card.border-yellow:hover {
+    border-color: var(--clr-yellow);
+}
+
+.service-card.border-red:hover {
+    border-color: var(--clr-red);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+
+/* --- Contact Section --- */
+.contact-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--clr-dark);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-info {
+    padding: 4rem 3rem;
+    background: linear-gradient(135deg, var(--clr-darker), var(--clr-dark));
+}
+
+.contact-details {
+    margin-top: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--clr-white);
+    margin-bottom: 1.5rem;
+}
+
+.detail-item i {
+    color: var(--clr-yellow);
+    font-size: 1.2rem;
+    width: 24px;
+}
+
+.contact-form {
+    padding: 4rem 3rem;
+    background: var(--clr-white);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--clr-dark);
+}
+
+.form-group label small {
+    font-weight: 400;
+    color: var(--clr-gray);
+    margin-left: 0.25rem;
+    font-size: 0.8rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--clr-green);
+    box-shadow: 0 0 0 3px rgba(53, 163, 78, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+}
+
+.submit-btn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- Captcha Box Styling --- */
+.captcha-group {
+    margin-bottom: 2rem;
+}
+
+.captcha-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fdfdfd;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.captcha-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.captcha-checkbox {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #c1c1c1;
+    border-radius: 2px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.captcha-checkbox.verified {
+    background-color: var(--clr-green);
+    border-color: var(--clr-green);
+    color: white;
+}
+
+.captcha-checkbox i {
+    font-size: 14px;
+}
+
+.captcha-label {
+    font-weight: 500;
+    color: var(--clr-dark);
+}
+
+.captcha-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #4a4a4a;
+    opacity: 0.6;
+}
+
+.captcha-logo i {
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+}
+
+.captcha-logo span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Footer --- */
+.footer {
+    background: var(--clr-darker);
+    color: var(--clr-white);
+    padding-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1);
+    /* makes the text white while keeping colors distinct if it's transparent, but for jpg it might be weird. Let's just use regular logo */
+}
+
+/* Override filter for jpg logo */
+.footer-brand .footer-logo {
+    filter: none;
+    border-radius: 4px;
+    background: white;
+    padding: 5px;
+}
+
+.footer h4 {
+    color: var(--clr-gray);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.footer-brand p {
+    color: var(--clr-gray);
+    margin-top: 1rem;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links ul li a {
+    color: var(--clr-white);
+    opacity: 0.8;
+}
+
+.footer-links ul li a:hover {
+    color: var(--clr-green);
+    opacity: 1;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.social-icons a:hover {
+    background: var(--clr-green);
+    color: var(--clr-white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--clr-gray);
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 900px) {
+
+    .auto-grid,
+    .contact-box {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--clr-white);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+}

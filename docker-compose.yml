@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # 1. Edge Reverse Proxy (Nginx)
+  # Acts as the entrypoint for all traffic from the Lightsail Host (Ports 80/443).
+  # Routes trulyfacile.com to the 'website' container and time.trulyfacile.com to 'kimai'.
+  reverse-proxy:
+    image: nginx:alpine
+    container_name: edge-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./edge-nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - website
+      - kimai
+    networks:
+      - tfl-network
+
+  # 2. Truly Facile Website
+  # The lightweight HTML/CSS/JS frontend.
+  website:
+    build: .
+    container_name: tfl-website
+    restart: unless-stopped
+    # No ports mapped to the host; only accessible via the reverse proxy network.
+    networks:
+      - tfl-network
+
+  # 3. Kimai Time Tracking Instance
+  kimai:
+    image: kimai/kimai2:apache
+    container_name: kimai
+    restart: unless-stopped
+    environment:
+      - APP_ENV=prod
+      - DATABASE_URL=mysql://kimai:kimai_password@kimai-db/kimai
+      # WARNING: Change the trusted hosts based on your local or prod domain needs!
+      - TRUSTED_HOSTS=time.trulyfacile.com,localhost,127.0.0.1
+    depends_on:
+      - kimai-db
+    networks:
+      - tfl-network
+
+  # 4. MySQL DB for Kimai
+  kimai-db:
+    image: mysql:8.0
+    container_name: kimai-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=kimai
+      - MYSQL_USER=kimai
+      - MYSQL_PASSWORD=kimai_password
+      - MYSQL_ROOT_PASSWORD=kimai_root_password
+    volumes:
+      - kimai_db_data:/var/lib/mysql
+    networks:
+      - tfl-network
+
+networks:
+  tfl-network:
+    driver: bridge
+
+volumes:
+  kimai_db_data:

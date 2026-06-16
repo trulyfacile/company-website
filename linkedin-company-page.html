@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Company Page Mockup - Truly Facile Ltd.</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --clr-green: #35a34e;
+            --clr-yellow: #f2b919;
+            --clr-red: #ea4a3f;
+            --clr-white: #ffffff;
+            --clr-light: #f3f2ef; 
+            --clr-gray: #666666;
+            --clr-dark: #000000;
+            --clr-blue: #0a66c2; 
+            --clr-blue-hover: #004182;
+            --font-main: 'Inter', sans-serif;
+            --shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.08);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--clr-light);
+            color: var(--clr-dark);
+            line-height: 1.5;
+            padding-bottom: 50px;
+        }
+
+        /* Mock Header Bar */
+        .header-bar {
+            background-color: var(--clr-white);
+            height: 52px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header-inner {
+            width: 100%;
+            max-width: 1128px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+        .mock-logo {
+            color: var(--clr-blue);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        /* Company Layout */
+        .main-container {
+            max-width: 1128px;
+            margin: 24px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 24px;
+            padding: 0 24px;
+        }
+
+        @media (max-width: 800px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none;
+            }
+        }
+
+        section {
+            background-color: var(--clr-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .company-header {
+            position: relative;
+        }
+
+        .banner {
+            height: 200px;
+            background: linear-gradient(135deg, var(--clr-green) 0%, var(--clr-yellow) 50%, var(--clr-red) 100%);
+            width: 100%;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 130px;
+            left: 24px;
+            border: 4px solid var(--clr-white);
+            background: var(--clr-white);
+            width: 120px;
+            height: 120px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .company-intro {
+            padding: 60px 24px 0;
+        }
+
+        .company-intro h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .company-intro .tagline {
+            font-size: 1rem;
+            color: var(--clr-dark);
+            margin-top: 4px;
+        }
+
+        .company-intro .meta {
+            font-size: 0.9rem;
+            color: var(--clr-gray);
+            margin-top: 8px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 0 24px 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 1600px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--clr-blue);
+            color: var(--clr-white);
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: var(--clr-blue-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--clr-blue);
+            border: 1px solid var(--clr-blue);
+        }
+        .btn-secondary:hover {
+            background-color: rgba(10, 102, 194, 0.1);
+            border-width: 2px;
+            padding: 7px 15px;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            padding: 0 24px;
+            display: flex;
+            gap: 24px;
+        }
+        .tab {
+            padding: 16px 0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--clr-gray);
+            cursor: pointer;
+            position: relative;
+        }
+        .tab.active {
+            color: var(--clr-green);
+        }
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--clr-green);
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--clr-dark);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .info-item h4 {
+            font-size: 0.9rem;
+            color: var(--clr-dark);
+            margin-bottom: 4px;
+        }
+        .info-item p {
+            font-size: 0.9rem;
+            color: var(--clr-gray);
+        }
+
+        /* Sidebar Mockup */
+        .sidebar section {
+            padding: 16px;
+        }
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .recent-post {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        .recent-post:last-child {
+            border-bottom: none;
+        }
+        .recent-post h5 {
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        .recent-post p {
+            font-size: 0.8rem;
+            color: var(--clr-gray);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <div class="header-inner">
+            <div class="mock-logo"><i class="fa-brands fa-linkedin"></i></div>
+            <div style="color: #666; font-size: 0.9rem;">LinkedIn Company Page</div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <main>
+            <!-- Top Card -->
+            <section>
+                <div class="company-header">
+                    <div class="banner"></div>
+                    <div class="logo-container">
+                        <img src="img/Complete_logo_without_website_just_company.svg" alt="Truly Facile Ltd. Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/100?text=Logo';">
+                    </div>
+                </div>
+                <div class="company-intro">
+                    <h1>Truly Facile Ltd.</h1>
+                    <p class="tagline">Complex Problems. Truly Simple Solutions. • Practical IT and Geospatial Solutions</p>
+                    <p class="meta">IT Services and IT Consulting &bull; Calgary, Alberta &bull; 2-10 employees</p>
+                </div>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Follow</button>
+                    <button class="btn btn-secondary">Visit website <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i></button>
+                    <button class="btn btn-secondary">More</button>
+                </div>
+                <div class="tabs-nav">
+                    <div class="tab active">Home</div>
+                    <div class="tab">About</div>
+                    <div class="tab">Posts</div>
+                    <div class="tab">Jobs</div>
+                    <div class="tab">People</div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section>
+                <div class="card-content">
+                    <h2 class="section-title">About</h2>
+                    <p>Truly Facile Ltd. is a premier technical consulting firm dedicated to bringing elegance and simplicity to modern business challenges. Since our founding in 2021, we have established a reputation for absolute reliability, transparent communication, and relentless optimization.</p>
+                    <br>
+                    <p>We specialize in delivering high-impact solutions in:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px; font-size: 0.95rem;">
+                        <li><strong>Technical Consulting:</strong> Architecture, infrastructure, and modern deployment.</li>
+                        <li><strong>Geospatial Solutions:</strong> Integrated WebGIS platforms and spatial data systems.</li>
+                        <li><strong>Operational Management:</strong> Streamlining internal workflows for peak efficiency.</li>
+                        <li><strong>SR&ED Technical Support:</strong> Organizing technical activities and documentation in alignment with SR&ED criteria to produce well-supported and defensible claims.</li>
+                    </ul>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <h4>Website</h4>
+                            <p><a href="http://trulyfacile.com" style="color: var(--clr-blue);">trulyfacile.com</a></p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Industry</h4>
+                            <p>IT Services and IT Consulting</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Company size</h4>
+                            <p>2-10 employees (5 on LinkedIn)</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Headquarters</h4>
+                            <p>Calgary, Alberta</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Type</h4>
+                            <p>Privately Held</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Founded</h4>
+                            <p>2021</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <section>
+                <h3 class="sidebar-title">Recent Updates</h3>
+                <div class="recent-post">
+                    <h5>Optimizing WebGIS for 2026</h5>
+                    <p>Discover how we're transforming spatial data analysis for engineering firms.</p>
+                </div>
+                <div class="recent-post">
+                    <h5>Engineering Rigor Unlocked</h5>
+                    <p>Learn how our documentation discipline is transforming project transparency for engineering teams.</p>
+                </div>
+                <div class="recent-post">
+                    <h5>We are hiring!</h5>
+                    <p>Looking for enthusiastic GIS Analysts to join our growing Calgary team.</p>
+                </div>
+            </section>
+            
+            <section style="background-color: transparent; box-shadow: none;">
+                <p style="font-size: 0.75rem; color: var(--clr-gray); text-align: center;">
+                    LinkedIn &copy; 2026 &bull; Truly Facile Ltd. Mockup
+                </p>
+            </section>
+        </aside>
+    </div>
+
+</body>
+</html>
